@@ -1,12 +1,25 @@
-#include "colorCode.h"
+#include <stdio.h>
+#include "ColorCode.h"
 
-void ColorPairToString(const ColorPair* colorPair, char* buffer) {
+const char* MajorColorNames[] = {
+    "White", "Red", "Black", "Yellow", "Violet"
+};
+const char* MinorColorNames[] = {
+    "Blue", "Orange", "Green", "Brown", "Slate"
+};
+
+int numberOfMajorColors =
+    sizeof(MajorColorNames) / sizeof(MajorColorNames[0]);
+int numberOfMinorColors =
+    sizeof(MinorColorNames) / sizeof(MinorColorNames[0]);
+
+void ColorPairString(const ColorPair* colorPair, char* buffer) {
     sprintf(buffer, "%s %s",
         MajorColorNames[colorPair->majorColor],
         MinorColorNames[colorPair->minorColor]);
 }
 
-ColorPair GetColorFromPairNumber(int pairNumber) {
+ColorPair GetColorPair(int pairNumber) {
     ColorPair colorPair;
     int zeroBasedPairNumber = pairNumber - 1;
     colorPair.majorColor = 
@@ -16,32 +29,19 @@ ColorPair GetColorFromPairNumber(int pairNumber) {
     return colorPair;
 }
 
-int GetPairNumberFromColor(const ColorPair* colorPair) {
+int GetPairNumber(const ColorPair* colorPair) {
     return colorPair->majorColor * numberOfMinorColors +
             colorPair->minorColor + 1;
 }
 
-void testNumberToPair(int pairNumber,
-    enum MajorColor expectedMajor,
-    enum MinorColor expectedMinor)
-{
-    ColorPair colorPair = GetColorFromPairNumber(pairNumber);
-    char colorPairNames[MAX_COLORPAIR_NAME_CHARS];
-    ColorPairToString(&colorPair, colorPairNames);
-    printf("Got pair %s\n", colorPairNames);
-    assert(colorPair.majorColor == expectedMajor);
-    assert(colorPair.minorColor == expectedMinor);
-}
-
-void testPairToNumber(
-    enum MajorColor major,
-    enum MinorColor minor,
-    int expectedPairNumber)
-{
-    ColorPair colorPair;
-    colorPair.majorColor = major;
-    colorPair.minorColor = minor;
-    int pairNumber = GetPairNumberFromColor(&colorPair);
-    printf("Got pair number %d\n", pairNumber);
-    assert(pairNumber == expectedPairNumber);
+int GetReferenceManual(){
+    printf("\nColor Pair Manual:\nPairNo. Maj.Color Min.Color\n");
+    for (int pairNumber=1; pairNumber<MAX_COLORPAIR; pairNumber++)
+    {
+         ColorPair colorPair = GetColorPair(pairNumber);
+         char colorPairNames[MAX_COLORPAIR_NAME_CHARS];
+         ColorPairString(&colorPair, colorPairNames);
+         printf("%d\t%s\n", pairNumber, colorPairNames);
+    }
+    return TRUE;
 }
