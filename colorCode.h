@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <assert.h>
 #define MAX_COLORPAIR_NAME_CHARS 16
 #define MAX_COLORPAIR 26
 #define TRUE 1
@@ -25,3 +26,7 @@ int GetReferenceManual();
 void testGetColorPair(int pairNumber, enum MajorColor expectedMajor, enum MinorColor expectedMinor);
 void testGetPairNumber(enum MajorColor major, enum MinorColor minor, int expectedPairNumber);
 void testGetReferenceManual();
+void testPairToNumber(enum MajorColor major, enum MinorColor minor, int expectedPairNumber);
+void ColorPairToString(const ColorPair* colorPair, char* buffer);
+ColorPair GetColorFromPairNumber(int pairNumber) ;
+void testNumberToPair(int pairNumber, enum MajorColor expectedMajor, enum MinorColor expectedMinor);
