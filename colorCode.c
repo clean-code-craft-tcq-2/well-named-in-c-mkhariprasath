@@ -45,3 +45,4 @@ int GetReferenceManual(){
     }
     return TRUE;
 }
+
