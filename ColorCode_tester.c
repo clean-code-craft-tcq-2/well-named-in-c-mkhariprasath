@@ -33,3 +33,4 @@ void testGetReferenceManual()
     assert(retVal == TRUE);
 
 }
+
