@@ -23,10 +23,7 @@ ColorPair GetColorPair(int pairNumber);
 int GetPairNumber(const ColorPair* colorPair) ;
 int GetReferenceManual();
 
-void testGetColorPair(int pairNumber, enum MajorColor expectedMajor, enum MinorColor expectedMinor);
-void testGetPairNumber(enum MajorColor major, enum MinorColor minor, int expectedPairNumber);
-void testGetReferenceManual();
-void testPairToNumber(enum MajorColor major, enum MinorColor minor, int expectedPairNumber);
+
 void ColorPairToString(const ColorPair* colorPair, char* buffer);
 ColorPair GetColorFromPairNumber(int pairNumber) ;
-void testNumberToPair(int pairNumber, enum MajorColor expectedMajor, enum MinorColor expectedMinor);
+
