@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include "colorCode.h"
+#include "ColorCode_tester.h"
 
 void testGetColorPair(int pairNumber,
     enum MajorColor expectedMajor,
